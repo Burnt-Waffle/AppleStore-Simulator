@@ -38,15 +38,26 @@ public class IPhone extends AppleDevice implements ColorSelectable, StorageSelec
 
     // 아이폰 모델 선택
     public void selectModel(Scanner sc){
-        System.out.println("\n=== iPhone 모델 선택 ===");
-        System.out.println("모델. 당신에게 딱 맞는 모델은?");
-        // 모델 옵션 출력
-        for (int i = 0; i < MODEL_NAMES.length; i++){
-            System.out.printf("%d. %s (%,d원)\n", i + 1, MODEL_NAMES[i], MODEL_PRICES[i]);
+        int choice;
+        while(true){
+            System.out.println("\n=== iPhone 모델 선택 ===");
+            System.out.println("모델. 당신에게 딱 맞는 모델은?");
+            // 모델 옵션 출력
+            for (int i = 0; i < MODEL_NAMES.length; i++){
+                System.out.printf("%d. %s (%,d원)\n", i + 1, MODEL_NAMES[i], MODEL_PRICES[i]);
+            }
+            try{
+                choice = Integer.parseInt(sc.nextLine());
+                if (choice >= 1 && choice <= MODEL_NAMES.length){
+                    break;
+                } else {
+                    System.out.println("\n잘못된 입력입니다. 범위 안에서 선택해주세요.");
+                }
+            } catch(NumberFormatException e){
+                System.out.println("\n잘못된 입력입니다. 숫자로 입력해주세요.");
+            }
         }
-        this.modelType = sc.nextInt();
-        sc.nextLine();
-
+        this.modelType = choice;
         this.name = MODEL_NAMES[modelType-1];
         this.price = MODEL_PRICES[modelType-1];
 
@@ -56,8 +67,6 @@ public class IPhone extends AppleDevice implements ColorSelectable, StorageSelec
 
     @Override
     public void selectColor(Scanner sc) {
-        System.out.println("=== 색상 선택 ===");
-        System.out.println("색상. 맘에 드는 색상을 선택하세요.");
         // 모델에 맞게 색상 옵션 로드
         String[] colorOptions;
         switch (this.modelType){
@@ -67,21 +76,30 @@ public class IPhone extends AppleDevice implements ColorSelectable, StorageSelec
             case IPHONE_AIR:
                 colorOptions = IPHONE_AIR_COLORS;
                 break;
-            case IPHONE_PRO:
-            case IPHONE_PRO_MAX:
-                colorOptions = IPHONE_PRO_COLORS;
-                break;
             default:
-                System.out.println("오류: 잘못된 모델입니다.");
-                return;
-        }
-        // 모델별 색상 옵션 출력
-        for (int i = 0; i < colorOptions.length; i++){
-            System.out.printf("%d. %s\n", i+1, colorOptions[i]);
+                colorOptions = IPHONE_PRO_COLORS;
         }
 
-        int choice = sc.nextInt();
-        sc.nextLine();
+        int choice;
+        while(true){
+            System.out.println("=== 색상 선택 ===");
+            System.out.println("색상. 맘에 드는 색상을 선택하세요.");
+            // 모델별 색상 옵션 출력
+            for (int i = 0; i < colorOptions.length; i++){
+                System.out.printf("%d. %s\n", i+1, colorOptions[i]);
+            }
+            try{
+                choice = Integer.parseInt(sc.nextLine());
+                if (choice >= 1 && choice <= colorOptions.length){
+                    break;
+                } else {
+                    System.out.println("\n잘못된 입력입니다. 범위 안에서 선택해주세요.");
+                }
+            } catch(NumberFormatException e){
+                System.out.println("\n잘못된 입력입니다. 숫자로 입력해주세요.");
+            }
+        }
+
         this.color = colorOptions[choice-1];
 
         System.out.println("\n선택한 색상: " + color);
@@ -91,9 +109,6 @@ public class IPhone extends AppleDevice implements ColorSelectable, StorageSelec
 
     @Override
     public void selectStorage(Scanner sc) {
-        System.out.println("=== 저장 용량 선택 ===");
-        System.out.println("저장 용량. 당신에게 알맞은 저장 용량은?");
-
         // 모델에 맞게 용량과 가격 옵션 로드
         String[] storageOptions;
         int[] storagePrice;
@@ -116,13 +131,26 @@ public class IPhone extends AppleDevice implements ColorSelectable, StorageSelec
                 return;
         }
 
-        // iPhone 별 저장 용량 옵션 출력
-        for (int i = 0; i < storageOptions.length; i++){
-            System.out.printf("%d. %s (+%,d원)\n", i+1, storageOptions[i], storagePrice[i]);
+        int choice;
+        while(true){
+            System.out.println("=== 저장 용량 선택 ===");
+            System.out.println("저장 용량. 당신에게 알맞은 저장 용량은?");
+            // iPhone 별 저장 용량 옵션 출력
+            for (int i = 0; i < storageOptions.length; i++){
+                System.out.printf("%d. %s (+%,d원)\n", i+1, storageOptions[i], storagePrice[i]);
+            }
+            try{
+                choice = Integer.parseInt(sc.nextLine());
+                if (choice >= 1 && choice <= storageOptions.length){
+                    break;
+                } else {
+                    System.out.println("\n잘못된 입력입니다. 범위 안에서 선택해주세요.");
+                }
+            } catch(NumberFormatException e){
+                System.out.println("\n잘못된 입력입니다. 숫자로 입력해주세요.");
+            }
         }
 
-        int choice = sc.nextInt();
-        sc.nextLine();
         this.storage = storageOptions[choice-1];
         this.price += storagePrice[choice-1];
 

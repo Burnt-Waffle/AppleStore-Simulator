@@ -31,15 +31,23 @@ public class AppleDevice {
 
     // 최종 결재 확인
     public void confirmPurchase(Scanner sc) {
-        showInfo();
-        System.out.println("주문을 확정하시겠습니까? [y/n] ");
-        String purchaseChoice = sc.nextLine();
-        if (purchaseChoice.equalsIgnoreCase("y")){
-            System.out.println("\n구매가 완료되었습니다!");
-            System.out.println("주문하신 " + name + "이(가) 곧 배송될 예정입니다.\n");
-        } else {
-            System.out.println("\n구매가 취소되었습니다.\n");
+        while(true){
+            showInfo();
+            System.out.println("주문을 확정하시겠습니까? [y/n] ");
+            String purchaseChoice = sc.nextLine();
+            if (purchaseChoice.equalsIgnoreCase("y")){
+                System.out.println("\n구매가 완료되었습니다!");
+                System.out.println("주문하신 " + name + "이(가) 곧 배송될 예정입니다.\n");
+                break;
+            } else {
+                System.out.println("\n정말로 구매를 취소하려면 y를 눌러주세요.");
+                System.out.println("다시 주문을 확정하고 싶으면 아무 키나 눌러주세요.");
+                purchaseChoice = sc.nextLine();
+                if (purchaseChoice.equalsIgnoreCase("y")) {
+                    System.out.println("\n 주문이 취소되었습니다.\n");
+                    break;
+                }
+            }
         }
     }
-
 }

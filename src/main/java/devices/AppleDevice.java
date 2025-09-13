@@ -36,9 +36,9 @@ public class AppleDevice {
         String purchaseChoice = sc.nextLine();
         if (purchaseChoice.equalsIgnoreCase("y")){
             System.out.println("\n구매가 완료되었습니다!");
-            System.out.println("주문하신 " + name + "이(가) 곧 배송될 예정입니다.");
+            System.out.println("주문하신 " + name + "이(가) 곧 배송될 예정입니다.\n");
         } else {
-            System.out.println("\n구매가 취소되었습니다.");
+            System.out.println("\n구매가 취소되었습니다.\n");
         }
     }
 

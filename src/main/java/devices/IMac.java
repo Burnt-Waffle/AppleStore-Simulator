@@ -58,7 +58,6 @@ public class IMac extends Mac implements ColorSelectable, StorageSelectable, Ram
         System.out.println("3. 32GB (+600000원)");
         int ramChoice = sc.nextInt();
         sc.nextLine();
-        System.out.println();
         switch(ramChoice){
             case 1:
                 ramSize = 16; break;
@@ -92,7 +91,6 @@ public class IMac extends Mac implements ColorSelectable, StorageSelectable, Ram
                 price += 300000;
                 break;
         }
-        System.out.println();
         System.out.println("\n선택한 용량: " + storage);
         System.out.println("현재 가격: " + String.format("%,d",price) + "원");
     }

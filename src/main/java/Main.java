@@ -30,7 +30,7 @@ public class Main {
         if (categoryChoice == 1){
             myDevice = new IPhone();
         } else if (categoryChoice == 2){
-            System.out.println("\n===원하는 Mac 선택===");
+            System.out.println("\n=== 원하는 Mac 선택 ===");
             System.out.println("꿈꾸던 그 모든 것, Mac과 함께 현실로.");
             System.out.println("1. MacBook Air");
             System.out.println("2. MacBook Pro");

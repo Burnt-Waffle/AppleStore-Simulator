@@ -26,7 +26,8 @@ public class Macbook extends Mac implements ColorSelectable, StorageSelectable, 
 
     @Override
     public void selectDisplay(Scanner sc){
-        System.out.println("\n" + name + "의 화면 크기를 선택하세요.");
+        System.out.println("\n" + "=== 화면 크기 선택 ===");
+        System.out.println(name + "의 화면 크기를 선택하세요.");
         if (!isPro){
             System.out.println("1. 13inch (1,590,000원)");
             System.out.println("2. 15inch (1,890,000원)");
